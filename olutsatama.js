@@ -1,11 +1,12 @@
 var request = require("request");
+var schedule = require('node-schedule');
 
 var sendMessage = function() {
     var time = getTimeRemaining("2016-06-11 19:00:00");
     console.log(time);
     var message = "Olutristeily countdown: " + time.days + "d " + time.hours + "h " + time.minutes + "m " + time.seconds + "s";
     var options = { method: 'POST',
-      url: 'https://api.telegram.org/bot162620888:AAEVQ8nB9mFbZmqdJW7FDtLiz1Td83FeYG/sendMessage',
+      url: 'https://api.telegram.org/bot162620888:AAEVQ8nB9mFbZmqdJW7FDtLiz1Td83FeYGY/sendMessage',
       headers:
        { 'content-type': 'application/json' },
       body: { chat_id: '-6480162', text: message},
@@ -13,7 +14,6 @@ var sendMessage = function() {
 
     request(options, function (error, response, body) {
       if (error) throw new Error(error);
-
       console.log(body);
     });
 }
@@ -38,9 +38,7 @@ function getTimeRemaining(endtime) {
   };
 }
 
-var schedule = require('node-schedule');
- 
- var j = schedule.scheduleJob('0 * * * *', function(){
-   console.log('The answer to life, the universe, and everything!');
-   sendMessage();
-   });
+var j = schedule.scheduleJob('0 * * * *', function(){
+ console.log('Send message call');
+ sendMessage();
+});
