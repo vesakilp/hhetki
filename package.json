@@ -1,0 +1,10 @@
+{
+    "name": "teleCount",
+    "version": "1.0.0",
+    "description": "Telegram countdown bot",
+    "author": "Vesa Kilpiäinen",
+    "license": "ISC",
+    "dependencies": {
+        "request": "^2"
+    }
+}
