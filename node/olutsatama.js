@@ -4,9 +4,9 @@ var schedule = require('node-schedule');
 var sendMessage = function() {
     var time = getTimeRemaining("2016-06-11 19:00:00");
     console.log(time);
-    var message = "Olutristeily countdown: " + time.days + "d " + time.hours + "h " + time.minutes + "m " + time.seconds + "s";
+    var message = "Olutristeily countdown: " + time.days +
     var options = { method: 'POST',
-      url: 'https://api.telegram.org/bot162620888:AAEVQ8nB9mFbZmqdJW7FDtLiz1Td83FeYGY/sendMessage',
+      url: 'https://api.telegram.org/bot162620888:AAEVQ8nB
       headers:
        { 'content-type': 'application/json' },
       body: { chat_id: '-6480162', text: message},
@@ -38,7 +38,7 @@ function getTimeRemaining(endtime) {
   };
 }
 
-var j = schedule.scheduleJob('0 * * * *', function(){
+var j = schedule.scheduleJob('0 12 * * *', function(){
  console.log('Send message call');
  sendMessage();
 });
