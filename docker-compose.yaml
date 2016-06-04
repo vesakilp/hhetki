@@ -1,0 +1,18 @@
+nginx:
+    build: ./nginx
+    links:
+        - node
+    ports:
+        - "8443:8443"
+node:
+    build: ./node
+    links:
+        - redis
+    ports:
+        - "8080"
+    volumes:
+        - ./node:/src
+redis:
+    build: ./redis
+    ports:
+        - "6379"

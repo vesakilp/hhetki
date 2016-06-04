@@ -4,9 +4,14 @@
   "description": "Telegram countdown bot",
   "author": "Vesa Kilpiäinen",
   "license": "ISC",
+  "scripts": {
+    "start": "nodemon -L howlong.js"
+  },
   "dependencies": {
+    "express": "^4.13.4",
     "node-schedule": "^1.1.0",
-    "request": "^2"
+    "redis": "^2.6.1",
+    "request": "^2.72.0"
   },
   "devDependencies": {
     "node-schedule": "^1.1.0",
