@@ -11,7 +11,8 @@
     "express": "^4.13.4",
     "node-schedule": "^1.1.0",
     "redis": "^2.6.1",
-    "request": "^2.72.0"
+    "request": "^2.72.0",
+    "time": "^0.11.4"
   },
   "devDependencies": {
     "node-schedule": "^1.1.0",
