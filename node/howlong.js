@@ -3,7 +3,6 @@ var request = require('request');
 var time = require('time');
 
 var port = process.env.PORT || 8080;
-
 var app = express();
 app.post('/howlong', function(req, res) {
     console.log('request message body', req);
@@ -11,9 +10,10 @@ app.post('/howlong', function(req, res) {
 });
 
 var sendMessage = function(res) {
-    var time = getTimeRemaining("2016-06-11 19:00:00");
+    var time = getTimeRemaining("2016-06-23 16:00:00");
     console.log(time);
-    var message = "Olutristeily countdown: " + time.days + "d " + time.hours + "h " + time.minutes + "m " + time.seconds + "s";
+    var message = time !== null ? "Stockholm craft cruise: " + time.days + "d " + time.hours + "h " + time.minutes + "m " + time.seconds + "s" : "Bottoms up!";
+    //var message = "Olutristeily countdown: Risteily peruttu tennisottelun johdosta. Lisätiedustelut Heikki Wilen, +358 40 7763100";
     var options = { method: 'POST',
       url: 'https://api.telegram.org/bot162620888:AAEVQ8nB9mFbZmqdJW7FDtLiz1Td83FeYGY/sendMessage',
       headers:
@@ -37,6 +37,7 @@ function getTimeRemaining(endtime) {
     var now = new time.Date();
     //now.setTimezone("Europe/Helsinki"); 
   var t = Date.parse(endtime) - Date.parse(now);
+  if(t < 0) return null;
   var seconds = Math.floor((t / 1000) % 60);
   var minutes = Math.floor((t / 1000 / 60) % 60);
   var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
