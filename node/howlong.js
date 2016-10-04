@@ -4,11 +4,16 @@ var time = require('time');
 
 var port = process.env.PORT || 8080;
 var app = express();
+var config = require('./config');
 app.post('/howlong', function(req, res) {
-    console.log('request message body', req);
+    console.log('request message body ', req);
+    console.log('configuration ', config);
     sendMessage(res);
 });
 
+//TODO read zero moment from conf file
+//TODO read request url from conf file
+//TODO read chatId from conf file
 var sendMessage = function(res) {
     var time = getTimeRemaining("2016-06-23 16:00:00");
     console.log(time);
@@ -35,7 +40,7 @@ function daydiff(first, second) {
 
 function getTimeRemaining(endtime) {
     var now = new time.Date();
-    //now.setTimezone("Europe/Helsinki"); 
+    //now.setTimezone("Europe/Helsinki");
   var t = Date.parse(endtime) - Date.parse(now);
   if(t < 0) return null;
   var seconds = Math.floor((t / 1000) % 60);
