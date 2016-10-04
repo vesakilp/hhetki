@@ -6,13 +6,13 @@ nginx:
         - "8443:8443"
 node:
     build: ./node
-    links:
-        - redis
+#    links:
+#        - redis
     ports:
         - "8080"
     volumes:
         - ./node:/src
-redis:
-    build: ./redis
-    ports:
-        - "6379"
+#redis:
+#    build: ./redis
+#    ports:
+#        - "6379"
