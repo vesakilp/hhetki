@@ -15,15 +15,15 @@ app.post('/howlong', function(req, res) {
 //TODO read request url from conf file
 //TODO read chatId from conf file
 var sendMessage = function(res) {
-    var time = getTimeRemaining("2016-06-23 16:00:00");
+    var time = getTimeRemaining(config.dday);
     console.log(time);
     var message = time !== null ? "Stockholm craft cruise: " + time.days + "d " + time.hours + "h " + time.minutes + "m " + time.seconds + "s" : "Bottoms up!";
     //var message = "Olutristeily countdown: Risteily peruttu tennisottelun johdosta. Lisätiedustelut Heikki Wilen, +358 40 7763100";
     var options = { method: 'POST',
-      url: 'https://api.telegram.org/bot162620888:AAEVQ8nB9mFbZmqdJW7FDtLiz1Td83FeYGY/sendMessage',
+      url: config.requestUrl,
       headers:
        { 'content-type': 'application/json' },
-      body: { chat_id: '-6480162', text: message},
+      body: { chat_id: config.chatId, text: message},
       json: true };
 
     request(options, function (error, response, body) {
