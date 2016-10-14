@@ -10,8 +10,8 @@ node:
 #        - redis
     ports:
         - "8080"
-    volumes:
-        - ./node:/src
+    #volumes:
+    #    - ./node:/src
 #redis:
 #    build: ./redis
 #    ports:
