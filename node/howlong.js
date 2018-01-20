@@ -8,13 +8,23 @@ var config = require('./config');
 app.post('/howlong', function(req, res) {
     console.log('request message body ', req);
     console.log('configuration ', config);
-    sendMessage(res);
+    sendMessage(req, res);
 });
 
 //TODO read zero moment from conf file
 //TODO read request url from conf file
 //TODO read chatId from conf file
-var sendMessage = function(res) {
+var sendMessage = function(req, res) {
+
+const {message} = req.body
+//Each message contains "text" and a "chat" object, which has an "id" which is the chat id 
+if (!message || message.text.toLowerCase().indexOf('/howlong') <0) 
+{
+// In case a message is not present, or if our message does not have the word /howlong in it, do nothing and return an empty response 
+    return res.end() 
+}
+
+
     var time = getTimeRemaining(config.dday);
     console.log(time);
     var message = time !== null ? "Stockholm craft cruise: " + time.days + "d " + time.hours + "h " + time.minutes + "m " + time.seconds + "s" : "Bottoms up!";
