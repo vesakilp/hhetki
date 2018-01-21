@@ -8,9 +8,10 @@
     "start": "nodemon -L howlong.js"
   },
   "dependencies": {
-    "body-parser": "^1.18.2",
     "express": "^4.13.4",
+    "node-schedule": "^1.1.0",
+    "redis": "^2.6.1",
     "request": "^2.72.0",
-    "time": "^0.12.0"
+    "time": "^0.11.4"
   }
 }
