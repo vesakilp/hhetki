@@ -4,6 +4,11 @@ var time = require('time');
 
 var port = process.env.PORT || 8080;
 var app = express();
+
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({  extended: true}));
+
 var config = require('./config');
 app.post('/howlong', function(req, res) {
     console.log('request message body ', req);
@@ -16,12 +21,16 @@ app.post('/howlong', function(req, res) {
 //TODO read chatId from conf file
 var sendMessage = function(req, res) {
 
-const {message} = req.body
+var message = req && req.body && req.body.message;
 //Each message contains "text" and a "chat" object, which has an "id" which is the chat id 
 if (!message || message.text.toLowerCase().indexOf('/howlong') <0) 
 {
 // In case a message is not present, or if our message does not have the word /howlong in it, do nothing and return an empty response 
-    return res.end() 
+   console.log('IncomingMessage test', req.IncomingMessage); 
+   console.log('request invalid, req.body was', req.body);
+   console.log('request invalid, req.body.message was', req.body.message);
+   console.log('request invalid, req.body.message.text was', req.body.message.text);
+   return res.end(); 
 }
 
 
